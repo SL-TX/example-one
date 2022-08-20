@@ -4,68 +4,68 @@ public class Main {
     public static void main(String[] args) {
 
 //        Задание 1
-        int[] i = new int[3];
-        i[0] = 1;
-        i[1] = 2;
-        i[2] = 3;
-        double[] d = {1.57, 7.654, 9.986};
-        char[] c = {'G', 'O', 'O', 'D'};
+        int[] intArray = new int[3];
+        intArray[0] = 1;
+        intArray[1] = 2;
+        intArray[2] = 3;
+        double[] doubleArray = {1.57, 7.654, 9.986};
+        char[] charArray = {'G', 'O', 'O', 'D'};
 
 //        Задание 2
-        for (int j = 0; j < i.length; j++) {
-            if (j == i.length - 1)
-                System.out.print(i[j]);
+        for (int j = 0; j < intArray.length; j++) {
+            if (j == intArray.length - 1)
+                System.out.print(intArray[j]);
             else
-                System.out.print(i[j] + ",");
+                System.out.print(intArray[j] + ",");
         }
         System.out.println();
-        for (int j = 0; j < d.length; j++) {
-            if (j == d.length - 1)
-                System.out.print(d[j]);
+        for (int j = 0; j < doubleArray.length; j++) {
+            if (j == doubleArray.length - 1)
+                System.out.print(doubleArray[j]);
             else
-                System.out.print(d[j] + ",");
+                System.out.print(doubleArray[j] + ",");
         }
         System.out.println();
-        for (int j = 0; j < c.length; j++) {
-            if (j == c.length - 1)
-                System.out.print(c[j]);
+        for (int j = 0; j < charArray.length; j++) {
+            if (j == charArray.length - 1)
+                System.out.print(charArray[j]);
             else
-                System.out.print(c[j] + ",");
+                System.out.print(charArray[j] + ",");
         }
         System.out.println();
 
 
 //        Задание 3
-        for (int j = i.length-1; j >= 0 ; j--) {
+        for (int j = intArray.length - 1; j >= 0; j--) {
             if (j == 0)
-                System.out.print(i[j]);
+                System.out.print(intArray[j]);
             else
-                System.out.print(i[j] + ",");
+                System.out.print(intArray[j] + ",");
         }
         System.out.println();
-        for (int j = d.length-1; j >= 0 ; j--) {
+        for (int j = doubleArray.length - 1; j >= 0; j--) {
             if (j == 0)
-                System.out.print(d[j]);
+                System.out.print(doubleArray[j]);
             else
-                System.out.print(d[j] + ",");
+                System.out.print(doubleArray[j] + ",");
         }
         System.out.println();
-        for (int j = c.length-1; j >= 0 ; j--) {
+        for (int j = charArray.length - 1; j >= 0; j--) {
             if (j == 0)
-                System.out.print(c[j]);
+                System.out.print(charArray[j]);
             else
-                System.out.print(c[j] + ",");
+                System.out.print(charArray[j] + ",");
         }
         System.out.println();
 
 //        Задание 4
-        for (int j = 0; j < i.length; j++) {
-            if (i[j]%2==1)
-                i[j]+=1;
-            if (j == i.length - 1)
-                System.out.print(i[j]);
+        for (int j = 0; j < intArray.length; j++) {
+            if (intArray[j] % 2 == 1)
+                intArray[j] += 1;
+            if (j == intArray.length - 1)
+                System.out.print(intArray[j]);
             else
-                System.out.print(i[j] + ",");
+                System.out.print(intArray[j] + ",");
         }
 
     }
