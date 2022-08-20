@@ -33,9 +33,9 @@ public class Main {
 //        Задание 4
         int deliveryDistance = 95;
         int deliveryDays = 0;
-//        if (deliveryDistance < 20)
-//            deliveryDays+=1;
-//        if (deliveryDistance >= 20)
+        if (deliveryDistance < 20)
+            deliveryDays+=1;
+        if (deliveryDistance >= 20)
         deliveryDays += (deliveryDistance + 20) / 40 + 1;
         System.out.println("Потребуется дней: " + deliveryDays);
 
