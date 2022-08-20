@@ -1,5 +1,7 @@
 package ru.skypro;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 //        Задание 1
@@ -14,6 +16,16 @@ public class Main {
 
 //        Задание 3
         fullName = "Иванов Семён Семёнович";
+        StringBuilder editedFullName=new StringBuilder();
+        String[] sb;
+        if (fullName.contains("ё")) {
+            sb = fullName.split("ё");
+            for (String s:sb) {
+                editedFullName.append(s).append('е');
+            }
+            editedFullName.delete(editedFullName.length()-1,editedFullName.length());
+        }
+        System.out.println("Данные ФИО сотрудника — " + editedFullName);
         System.out.println("Данные ФИО сотрудника — " + fullName.replace('ё', 'е'));
 
     }
