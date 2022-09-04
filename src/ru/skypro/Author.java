@@ -1,4 +1,7 @@
 package ru.skypro;
+
+import java.util.Objects;
+
 //@AllArgsConstructor
 //@Getter
 public class Author {
@@ -16,7 +19,21 @@ public class Author {
     public String getLastName(){
         return this.lastName;
     }
+    @Override
     public String toString() {
         return this.getFirstName() + ' ' + this.getLastName();
+    }
+// Alt+Insert generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return getFirstName().equals(author.getFirstName()) && getLastName().equals(author.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
     }
 }
