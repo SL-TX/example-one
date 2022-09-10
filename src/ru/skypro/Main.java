@@ -1,7 +1,5 @@
 package ru.skypro;
 
-import java.util.Optional;
-
 public class Main {
     private static final EmployeeBook book = new EmployeeBook();
 
@@ -34,8 +32,8 @@ public class Main {
         book.delEmployeeByFIO("И.4", "Ф.4", "О.4");
         book.addNewEmplyeeInMem("asdf", "fdsa", "sasd", "3", 120000);
         book.addNewEmplyeeInMem("QQasdf", "QWfdsa", "WWasd", "1", 60000);
-        book.setEmployeeSalaryAndDepartment("И.6", "Ф.6", "О.6", Optional.of("1"), Optional.of(300000));
-        book.setEmployeeSalaryAndDepartment("И.7", "Ф.7", "О.7", Optional.empty(), Optional.of(250000));
+        book.setEmployeeSalaryAndDepartment("И.6", "Ф.6", "О.6", "1", 300000);
+        book.setEmployeeSalaryAndDepartment("И.7", "Ф.7", "О.7", null, 250000);
         System.out.println("TestCase: ");
         System.out.println(book.getAllEmployies());
 

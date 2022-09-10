@@ -1,4 +1,5 @@
 package ru.skypro;
+
 // Ентити
 //@Getter
 public class Employee {
@@ -12,7 +13,7 @@ public class Employee {
     //@Setter
     private Integer salary;
 
-    public Employee(final String firstName, final String lastName, final String secondName, final String department, final Integer salary){
+    public Employee(final String firstName, final String lastName, final String secondName, final String department, final Integer salary) {
         this.id = counter++;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,8 +35,21 @@ public class Employee {
                 "}";
     }
 
-    public Integer getId() {
-        return id;
+    public String toStringOnlyFIO() {
+        return "{" +
+                "\"Фамилия\":\"" + lastName + '\"' +
+                ", \"Имя\":\"" + firstName + '\"' +
+                ", \"Отчество\":\"" + secondName + "\"" +
+                "}";
+    }
+
+    public String toStringWithoutDepartment() {
+        return "{" +
+                "\"Фамилия\":\"" + lastName + '\"' +
+                ", \"Имя\":\"" + firstName + '\"' +
+                ", \"Отчество\":\"" + secondName + "\"" +
+                ", \"Зарплата\":" + salary +
+                "}";
     }
 
     public String getFirstName() {
