@@ -1,4 +1,5 @@
 package ru.skypro;
+// Ентити
 //@Getter
 public class Employee {
     private static int counter;
