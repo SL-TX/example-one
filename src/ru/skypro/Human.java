@@ -1,5 +1,7 @@
 package ru.skypro;
 
+import java.util.Objects;
+
 public class Human {
     @Override
     public String toString() {
@@ -12,10 +14,10 @@ public class Human {
     private String town;
 
     public Human(Integer yearOfBirth, String name, String town, String position) {
-        this.yearOfBirth = yearOfBirth;
-        this.name = name;
-        this.town = town;
-        this.position = position;
+        this.yearOfBirth = Objects.requireNonNullElse(yearOfBirth, 0);
+        this.name = Objects.requireNonNullElse(name,"Информация не указана");
+        this.town = Objects.requireNonNullElse(town,"Информация не указана");
+        this.position = Objects.requireNonNullElse(position,"Информация не указана");
     }
 
     public Integer getYearOfBirth() {

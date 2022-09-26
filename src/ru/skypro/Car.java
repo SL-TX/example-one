@@ -1,20 +1,26 @@
 package ru.skypro;
 
+import java.util.Objects;
+
 public class Car {
     private String brand;
 
     public Car(String brand, String model, String engineVolume, String color, Integer productionYear, String productionCountry) {
-        this.brand = brand;
-        this.model = model;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.productionYear = productionYear;
-        this.productionCountry = productionCountry;
+        this.brand = Objects.requireNonNullElse(brand,"default");
+        this.model = Objects.requireNonNullElse(model,"default");
+        this.engineVolume = Objects.requireNonNullElse(engineVolume," 1,5 л");
+        this.color = Objects.requireNonNullElse(color,"белый");
+        this.productionYear = Objects.requireNonNullElse(productionYear,2000);
+        this.productionCountry = Objects.requireNonNullElse(productionCountry,"default");
     }
 
     private String model;
     private String engineVolume;
     private String color;
+
+    public Car() {
+        this(null,null,null,null,null,null);
+    }
 
     @Override
     public String toString() {
