@@ -25,7 +25,9 @@ public class Human {
     }
 
     public void setYearOfBirth(Integer yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+        if (yearOfBirth != null && yearOfBirth<0) {
+            yearOfBirth = 0;
+        }this.yearOfBirth = yearOfBirth;
     }
 
     public String getName() {
@@ -41,6 +43,9 @@ public class Human {
     }
 
     public void setTown(String town) {
+        if (town != null && town.length()>0) {
+            town = "Информация не указана";
+        }
         this.town = town;
     }
 

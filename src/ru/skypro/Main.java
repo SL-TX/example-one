@@ -1,5 +1,7 @@
 package ru.skypro;
 
+import java.time.Year;
+
 public class Main {
     public static void main(String[] args){
         Human Максим = new Human(1987,"Максим","Минск","бренд-менеджер");
@@ -24,6 +26,39 @@ public class Main {
         System.out.println(car5);
         System.out.println(car6);
 
+        Human Владимир = new Human(Year.now().getValue()-21,"Владимир","Казань",null);
+        System.out.println(Владимир);
 
+        Flower РозаОбыкновенная  = new Flower("Роза обыкновенная",null,"Голландия",35.59,null);
+        Flower Хризантема = new Flower("Хризантема",null,null,15.0,5);
+        Flower Пион = new Flower("Пион",null,"Англия",69.9,1);
+        Flower Гипсофила = new Flower("Гипсофила",null,"Турция",19.5,10);
+        System.out.println(РозаОбыкновенная);
+        System.out.println(Хризантема);
+        System.out.println(Пион);
+        System.out.println(Гипсофила);
+        int numRose = 3;
+        int numChris = 5;
+        int numPion = 0;
+        int numGips = 1;
+        Double flowerPrice =
+                Math.round(
+                        1.1*  //+10%
+                                (numRose* РозаОбыкновенная.getCost()+
+            numChris* Хризантема.getCost()+
+            numPion* Пион.getCost()+
+            numGips* Гипсофила.getCost()) //getCost
+                                *100)/100d; //Todo: Загуглить другую функцию округления
+        int lifeSpan = 0;
+        if (numRose > 0)
+            lifeSpan = РозаОбыкновенная.getLifeSpan();
+        if (numChris > 0 && Хризантема.getLifeSpan()<lifeSpan)
+            lifeSpan = Хризантема.getLifeSpan();
+        if (numPion > 0 && Пион.getLifeSpan()<lifeSpan)
+            lifeSpan = Пион.getLifeSpan();
+        if (numGips > 0 && Гипсофила.getLifeSpan()<lifeSpan)
+            lifeSpan = Гипсофила.getLifeSpan();
+
+        System.out.println("будет стоить "+flowerPrice+" рублей и простоит "+lifeSpan+" суток. ");
     }
 }
