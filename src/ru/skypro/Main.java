@@ -1,5 +1,7 @@
 package ru.skypro;
 
+import ru.skypro.transport.Car;
+
 import java.time.Year;
 
 public class Main {
@@ -60,5 +62,10 @@ public class Main {
             lifeSpan = Гипсофила.getLifeSpan();
 
         System.out.println("будет стоить "+flowerPrice+" рублей и простоит "+lifeSpan+" суток. ");
+
+        Car car7 = new Car("Lada","Grande","1,7л", "желтый", 2015,"Россия"
+        , null, null, "A000XX000", null, null);
+        System.out.println(car7);
+
     }
 }
