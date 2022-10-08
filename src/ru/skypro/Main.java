@@ -1,6 +1,8 @@
 package ru.skypro;
 
+import ru.skypro.transport.Bus;
 import ru.skypro.transport.Car;
+import ru.skypro.transport.Train;
 
 import java.time.Year;
 
@@ -69,5 +71,70 @@ public class Main {
 
         Car.Key key = new Car.Key(true, true);
         Car.Insurance insurance = new Car.Insurance(2012, 2000.2, "asdf22dsa2");
+
+        Train train1 = new Train(
+                "Ласточка",
+                " B-901",
+                2011,
+                "России",
+                null,
+                301,
+                3500d,
+                null,
+                "Белорусского вокзала",
+                "Минск-Пассажирский",
+                11
+        );
+        Train train2 = new Train(
+                "Ленинград",
+                "D-125",
+                2019,
+                "России",
+                null,
+                270,
+                1700d,
+                null,
+                "Ленинградского вокзала",
+                "Ленинград-Пассажирский",
+                8
+        );
+        System.out.println(train1);
+        System.out.println(train2);
+        Bus bus1 = new Bus(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1,
+                2,
+                3
+        );
+        Bus bus2 = new Bus(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                4,
+                5,
+                6
+        );
+        Bus bus3 = new Bus(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                7,
+                8,
+                9
+        );
+        System.out.println(bus1);
+        System.out.println(bus2);
+        System.out.println(bus3);
     }
 }

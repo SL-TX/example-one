@@ -4,13 +4,8 @@ import java.time.Year;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Car {
-    private String brand;
-    private String model;
+public class Car extends Transport {
     private String engineVolume;
-    private String color;
-    private Integer productionYear;
-    private String productionCountry;
     private String transmission;
     private String bodyType;
     private String registrationNumber;
@@ -64,12 +59,8 @@ public class Car {
 
     public Car(String brand, String model, String engineVolume, String color, Integer productionYear, String productionCountry,
                String transmission, String bodyType, String registrationNumber, Integer numberOfSeats, Boolean isSummerTiers) {
-        this.brand = brand == null || brand.equals("") ? "default" : brand;
-        this.model = model == null || model.equals("") ? "default" : model;
+        super(brand, model, productionYear, productionCountry, color, 160);
         this.engineVolume = engineVolume == null || engineVolume.equals("") ? " 1,5 л" : engineVolume;
-        this.color = color == null || color.equals("") ? "белый" : color;
-        this.productionYear = productionYear == null || productionYear <= 0 ? 2000 : productionYear;
-        this.productionCountry = productionCountry == null || productionCountry.equals("") ? "default" : productionCountry;
         this.transmission = transmission == null || transmission.equals("") ? "default" : transmission;
         this.bodyType = bodyType == null || bodyType.equals("") ? "default" : bodyType;
         this.registrationNumber = !checkRegistrationNumber(registrationNumber) ? "X000XX000" : registrationNumber;
@@ -92,12 +83,12 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
+                "brand='" + super.getBrand() + '\'' +
+                ", model='" + super.getModel() + '\'' +
                 ", engineVolume='" + engineVolume + '\'' +
-                ", color='" + color + '\'' +
-                ", productionYear=" + productionYear +
-                ", productionCountry='" + productionCountry + '\'' +
+                ", color='" + super.getColor() + '\'' +
+                ", productionYear=" + super.getProductionYear() +
+                ", productionCountry='" + super.getProductionCountry() + '\'' +
                 ", transmission='" + transmission + '\'' +
                 ", bodyType='" + bodyType + '\'' +
                 ", registrationNumber='" + registrationNumber + '\'' +
@@ -106,28 +97,9 @@ public class Car {
                 '}';
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
 
     public String getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public Integer getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
     }
 
     public String getTransmission() {
@@ -152,10 +124,6 @@ public class Car {
 
     public void setEngineVolume(String engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public void setTransmission(String transmission) {
