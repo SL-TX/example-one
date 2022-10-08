@@ -81,6 +81,11 @@ public class Car extends Transport {
     }
 
     @Override
+    String refill() {
+        return  "Объекты класса car можно заправлять бензином, дизелем на заправке или заряжать на специальных электроду-парковках, если это электрокар.";
+    }
+
+    @Override
     public String toString() {
         return "Car{" +
                 "brand='" + super.getBrand() + '\'' +
@@ -94,7 +99,7 @@ public class Car extends Transport {
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", numberOfSeats=" + numberOfSeats +
                 ", isSummerTiers=" + isSummerTiers +
-                '}';
+                '}'+refill();
     }
 
 

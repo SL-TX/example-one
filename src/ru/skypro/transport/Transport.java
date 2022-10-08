@@ -1,12 +1,14 @@
 package ru.skypro.transport;
 
-public class Transport {
+public abstract class Transport {
     private String brand;
     private String model;
     private Integer productionYear;
     private String productionCountry;
     private String color;
     private Integer maxSpeed;
+
+    abstract String refill();
 
     public Transport(String brand, String model, Integer productionYear, String productionCountry, String color, Integer maxSpeed) {
         this.brand = brand == null || brand.equals("") ? "default" : brand;

@@ -26,6 +26,11 @@ public class Train extends Transport {
     }
 
     @Override
+    String refill() {
+        return "Объекты класса train нужно заправлять дизелем.";
+    }
+
+    @Override
     public String toString() {
         return "Train{" +
                 super.toString() +
@@ -34,7 +39,7 @@ public class Train extends Transport {
                 ", startStantion='" + startStantion + '\'' +
                 ", endStantion='" + endStantion + '\'' +
                 ", numVagons=" + numVagons +
-                '}';
+                '}'+refill();
     }
 
     public Double getCost() {

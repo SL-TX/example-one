@@ -13,13 +13,19 @@ public class Bus extends Transport {
     }
 
     @Override
+    String refill() {
+        return "Объекты класса bus можно заправлять бензином или дизелем на заправк";
+    }
+
+    @Override
     public String toString() {
         return "Bus{" +
                 super.toString() +
                 "var1=" + var1 +
                 ", var2=" + var2 +
                 ", var3=" + var3 +
-                '}';
+                '}'+
+                refill();
     }
 
     public Integer getVar1() {
