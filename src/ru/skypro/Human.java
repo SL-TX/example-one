@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Human {
     @Override
     public String toString() {
-        return "Привет! Меня зовут "+name+". Я из города "+town+". Я родился в "+yearOfBirth+" году. Будем знакомы! Я работаю на должности "+position+" . Будем знакомы!";
+        return "Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в " + yearOfBirth + " году. Будем знакомы! Я работаю на должности " + position + " . Будем знакомы!";
     }
 
     private Integer yearOfBirth;
@@ -15,9 +15,9 @@ public class Human {
 
     public Human(Integer yearOfBirth, String name, String town, String position) {
         this.yearOfBirth = Objects.requireNonNullElse(yearOfBirth, 0);
-        this.name = Objects.requireNonNullElse(name,"Информация не указана");
-        this.town = Objects.requireNonNullElse(town,"Информация не указана");
-        this.position = Objects.requireNonNullElse(position,"Информация не указана");
+        this.name = Objects.requireNonNullElse(name, "Информация не указана");
+        this.town = Objects.requireNonNullElse(town, "Информация не указана");
+        this.position = Objects.requireNonNullElse(position, "Информация не указана");
     }
 
     public Integer getYearOfBirth() {
@@ -25,9 +25,10 @@ public class Human {
     }
 
     public void setYearOfBirth(Integer yearOfBirth) {
-        if (yearOfBirth != null && yearOfBirth<0) {
+        if (yearOfBirth != null && yearOfBirth < 0) {
             yearOfBirth = 0;
-        }this.yearOfBirth = yearOfBirth;
+        }
+        this.yearOfBirth = yearOfBirth;
     }
 
     public String getName() {
@@ -43,7 +44,7 @@ public class Human {
     }
 
     public void setTown(String town) {
-        if (town != null && town.length()>0) {
+        if (town != null && town.length() > 0) {
             town = "Информация не указана";
         }
         this.town = town;

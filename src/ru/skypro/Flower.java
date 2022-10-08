@@ -12,10 +12,10 @@ public class Flower {
 
     public Flower(String name, String flowerColor, String country, Double cost, Integer lifeSpan) {
         this.name = name;
-        this.flowerColor = flowerColor == null || flowerColor.equals("") ?"Белый":flowerColor;
-        this.country = country == null || country.equals("") ?"Россия":country;
-        this.cost = cost == null || cost < 0 ? 1 : Math.round(cost*100)/100d ;
-        this.lifeSpan = lifeSpan == null || lifeSpan <=0 ? 3 : lifeSpan;
+        this.flowerColor = flowerColor == null || flowerColor.equals("") ? "Белый" : flowerColor;
+        this.country = country == null || country.equals("") ? "Россия" : country;
+        this.cost = cost == null || cost < 0 ? 1 : Math.round(cost * 100) / 100d;
+        this.lifeSpan = lifeSpan == null || lifeSpan <= 0 ? 3 : lifeSpan;
     }
 
     @Override
