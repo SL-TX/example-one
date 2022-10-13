@@ -4,10 +4,10 @@ import ru.skypro.transport.*;
 
 public class Main {
     public static void main(String[] args){
-        Car car1 = new Car("brand1","car1",1.6);
-        Transport car2 = new Car("brand2","car2",2.0);
-        Bus bus1 = new Bus("brand1","bus1",3.0);
-        Truck truck1 = new Truck("brand2","truck1",4.0);
+        Car car1 = new Car("brand1","car1",1.6,CarBody.Седан);
+        Transport car2 = new Car("brand2","car2",2.0, CarBody.Фургон);
+        Bus bus1 = new Bus("brand1","bus1",3.0, BusType.малая);
+        Truck truck1 = new Truck("brand2","truck1",4.0, TruckBody.N2);
         car1.startMoving();
         car2.startMoving();
         bus1.startMoving();
@@ -25,14 +25,21 @@ public class Main {
         bus1.pitStop();
         bus1.bestTime();
         bus1.maxSpeed();
-        Car car2c = (Car) car2;
-        Driver driver1 = new DriverB("F I O 1", true,5, car1);
-        Driver driver2 = new DriverB("F I O 2", false,0, car2c);
-        Driver driver3 = new DriverD("F I O 3", true,9, bus1);
-        Driver driver4 = new DriverC("F I O 4", true,7, truck1);
-        driver1.refill();
-        driver2.refill();
-        driver3.refill();
-        driver4.refill();
+        Driver<Car> driver1 = new Driver<>("F I O 1", true,5);
+        Driver<Transport> driver2 = new Driver<>("F I O 2", false,0);
+        Driver<Bus> driver3 = new Driver<>("F I O 3", true,9);
+        Driver<Truck> driver4 = new Driver<>("F I O 4", true,7);
+        driver1.refill(car1);
+        driver2.refill(car2);
+        driver3.refill(bus1);
+        driver4.refill(truck1);
+
+        System.out.println(car1.getType());
+        System.out.println(car2.getType());
+        System.out.println(truck1.getType());
+        System.out.println(bus1.getType());
+        Transport noname = new Car("as",null,null,null);
+        System.out.println(noname.getType());
+
     }
 }
