@@ -1,5 +1,7 @@
 package ru.skypro.animals.hierarchy;
 
+import ru.skypro.animals.Main;
+
 abstract class Mlekopitaushie extends Animal{
     private String area;
     private Integer speed;
@@ -7,10 +9,18 @@ abstract class Mlekopitaushie extends Animal{
 
     };
 
-    public Mlekopitaushie(String klichka, String area, Integer speed) {
-        super(klichka);
-        this.area = area;
-        this.speed = speed;
+    public Mlekopitaushie(String klichka, Integer numYears, String area, Integer speed) {
+        super(klichka, numYears);
+        this.area = Main.CheckUtil.checkString(area,"area");
+        this.speed = Main.CheckUtil.checkInteger(speed,10);
+    }
+
+    @Override
+    public String toString() {
+        return "Mlekopitaushie{" + super.toString() +
+                "area='" + area + '\'' +
+                ", speed=" + speed +
+                '}';
     }
 
     public String getArea() {
@@ -18,7 +28,7 @@ abstract class Mlekopitaushie extends Animal{
     }
 
     public void setArea(String area) {
-        this.area = area;
+        this.area = Main.CheckUtil.checkString(area,"area");
     }
 
     public Integer getSpeed() {
@@ -26,7 +36,7 @@ abstract class Mlekopitaushie extends Animal{
     }
 
     public void setSpeed(Integer speed) {
-        this.speed = speed;
+        this.speed = Main.CheckUtil.checkInteger(speed,10);
     }
     @Override
     protected void eat() {
@@ -35,6 +45,11 @@ abstract class Mlekopitaushie extends Animal{
 
     @Override
     protected void sleep() {
+
+    }
+
+    @Override
+    protected void go() {
 
     }
 }

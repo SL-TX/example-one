@@ -7,6 +7,7 @@ import ru.skypro.transport.Train;
 import java.time.Year;
 
 public class Main {
+
     public static void main(String[] args) {
         Human Максим = new Human(1987, "Максим", "Минск", "бренд-менеджер");
         Human Аня = new Human(1993, "Аня", "Москва", "методист образовательных программ");

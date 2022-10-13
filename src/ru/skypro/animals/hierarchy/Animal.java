@@ -1,16 +1,25 @@
 package ru.skypro.animals.hierarchy;
 
+import ru.skypro.animals.Main;
+
 abstract class Animal {
     private String klichka;
     private Integer numYears;
     protected abstract void eat();
     protected abstract void sleep();
-    public void move(){
+    protected abstract void go();
 
-    };
+    public Animal(String klichka, Integer numYears) {
+        this.klichka = Main.CheckUtil.checkString(klichka,"klichka");
+        this.numYears = Main.CheckUtil.checkInteger(numYears,5);
+    }
 
-    public Animal(String klichka) {
-        this.klichka = klichka;
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "klichka='" + klichka + '\'' +
+                ", numYears=" + numYears +
+                '}';
     }
 
     public String getKlichka() {
@@ -18,7 +27,7 @@ abstract class Animal {
     }
 
     public void setKlichka(String klichka) {
-        this.klichka = klichka;
+        this.klichka = Main.CheckUtil.checkString(klichka,"klichka");
     }
 
     public Integer getNumYears() {

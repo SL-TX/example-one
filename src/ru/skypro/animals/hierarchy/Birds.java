@@ -1,13 +1,22 @@
 package ru.skypro.animals.hierarchy;
 
+import ru.skypro.animals.Main;
+
 abstract class Birds extends Animal{
 
     private String area;
     protected abstract void hunt();
 
-    public Birds(String klichka, String area) {
-        super(klichka);
-        this.area = area;
+    public Birds(String klichka, Integer numYears, String area) {
+        super(klichka,numYears);
+        this.area = Main.CheckUtil.checkString(area,"area");
+    }
+
+    @Override
+    public String toString() {
+        return "Birds{" + super.toString() +
+                "area='" + area + '\'' +
+                '}';
     }
 
     public String getArea() {
@@ -15,10 +24,15 @@ abstract class Birds extends Animal{
     }
 
     public void setArea(String area) {
-        this.area = area;
+        this.area = Main.CheckUtil.checkString(area,"area");
     }
     @Override
     protected void eat() {
+
+    }
+
+    @Override
+    protected void go() {
 
     }
 
