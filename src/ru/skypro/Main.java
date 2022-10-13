@@ -1,9 +1,6 @@
 package ru.skypro;
 
-import ru.skypro.transport.Bus;
-import ru.skypro.transport.Car;
-import ru.skypro.transport.Transport;
-import ru.skypro.transport.Truck;
+import ru.skypro.transport.*;
 
 public class Main {
     public static void main(String[] args){
@@ -28,5 +25,13 @@ public class Main {
         bus1.pitStop();
         bus1.bestTime();
         bus1.maxSpeed();
+        Driver<Car> driver1 = new Driver<>("F I O 1", true,5);
+        Driver<Transport> driver2 = new Driver<>("F I O 2", false,0);
+        Driver<Bus> driver3 = new Driver<>("F I O 3", true,9);
+        Driver<Truck> driver4 = new Driver<>("F I O 4", true,7);
+        driver1.refill(car1);
+        driver2.refill(car2);
+        driver3.refill(bus1);
+        driver4.refill(truck1);
     }
 }
