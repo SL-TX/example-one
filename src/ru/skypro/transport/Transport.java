@@ -5,10 +5,13 @@ public abstract class Transport {
     private String model;
     private Double engineVolume;
 
-    public Transport(String brand, String model, Double engineVolume) {
+    private final Enum<?> type;
+
+    public Transport(String brand, String model, Double engineVolume, Enum<?> type) {
         this.brand = brand == null || brand.equals("") ? "default" : brand;
         this.model = model == null || model.equals("") ? "default" : model;
         this.engineVolume = (engineVolume == null || engineVolume<0) ? 1.6 : engineVolume;
+        this.type = type;
     }
 
     public void startMoving(){
@@ -49,5 +52,9 @@ public abstract class Transport {
 
     public void setEngineVolume(Double engineVolume) {
         this.engineVolume = engineVolume;
+    }
+
+    public String getType() {
+        return type == null ? "Данных недостаточно": type.name();
     }
 }

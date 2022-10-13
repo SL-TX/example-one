@@ -2,8 +2,8 @@ package ru.skypro.transport;
 
 public class Bus extends Transport implements Competitive {
 
-    public Bus(String brand, String model, Double engineVolume) {
-        super(brand, model, engineVolume);
+    public Bus(String brand, String model, Double engineVolume, BusType type) {
+        super(brand, model, engineVolume, type);
     }
 
     @Override

@@ -2,8 +2,8 @@ package ru.skypro.transport;
 
 public class Truck extends Transport implements Competitive{
 
-    public Truck(String brand, String model, Double engineVolume) {
-        super(brand, model, engineVolume);
+    public Truck(String brand, String model, Double engineVolume, TruckBody type) {
+        super(brand, model, engineVolume, type);
     }
 
     @Override
