@@ -3,8 +3,8 @@ package ru.skypro.transport;
 public abstract class Transport {
     private String brand;
     private String model;
-    private Integer productionYear;
-    private String productionCountry;
+    private final Integer productionYear;
+    private final String productionCountry;
     private String color;
     private Integer maxSpeed;
 
@@ -56,18 +56,18 @@ public abstract class Transport {
     }
 
     public void setBrand(String brand) {
-        this.brand = brand;
+        this.brand = brand == null || brand.equals("") ? "default" : brand;
     }
 
     public void setModel(String model) {
-        this.model = model;
+        this.model = model == null || model.equals("") ? "default" : model;
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = color == null || color.equals("") ? "белый" : color;
     }
 
     public void setMaxSpeed(Integer maxSpeed) {
-        this.maxSpeed = maxSpeed;
+        this.maxSpeed = maxSpeed == null || maxSpeed < 0 ? 0 : maxSpeed;
     }
 }

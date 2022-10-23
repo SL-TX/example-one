@@ -2,9 +2,11 @@ package ru.skypro.animals.hierarchy;
 
 import ru.skypro.animals.Main;
 
-public abstract class Travoyadnie extends Mlekopitaushie {
+import java.util.Objects;
+
+public class Travoyadnie extends Mlekopitaushie {
     private String typeOfPisha;
-    protected abstract void pastis();
+    protected void pastis(){};
 
     public Travoyadnie(String klichka, Integer numYears, String area, Integer speed, String typeOfPisha) {
         super(klichka,numYears, area, speed);
@@ -34,5 +36,17 @@ public abstract class Travoyadnie extends Mlekopitaushie {
     @Override
     protected void eat() {
         super.eat();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Travoyadnie travoyadnie)) return false;
+        return Objects.equals(getKlichka(), travoyadnie.getKlichka());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKlichka());
     }
 }

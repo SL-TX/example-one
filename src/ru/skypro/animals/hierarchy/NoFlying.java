@@ -2,9 +2,11 @@ package ru.skypro.animals.hierarchy;
 
 import ru.skypro.animals.Main;
 
-public abstract class NoFlying extends Birds {
+import java.util.Objects;
+
+public class NoFlying extends Birds {
     private String moveType;
-    protected abstract void walk();
+    protected void walk(){};
 
     public NoFlying(String klichka, Integer numYears, String area, String moveType) {
         super(klichka,numYears, area);
@@ -34,5 +36,18 @@ public abstract class NoFlying extends Birds {
     @Override
     protected void eat() {
         super.eat();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NoFlying noFlying)) return false;
+        return Objects.equals(getKlichka(), noFlying.getKlichka());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKlichka());
     }
 }

@@ -2,9 +2,11 @@ package ru.skypro.animals.hierarchy;
 
 import ru.skypro.animals.Main;
 
-public abstract class Zemnovodnie extends Animal{
+import java.util.Objects;
+
+public class Zemnovodnie extends Animal{
     private String area;
-    protected abstract void hunt();
+    protected void hunt(){};
 
     public Zemnovodnie(String klichka, Integer numYears, String area) {
         super(klichka,numYears);
@@ -38,5 +40,17 @@ public abstract class Zemnovodnie extends Animal{
     @Override
     protected void sleep() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Zemnovodnie zemnovodnie)) return false;
+        return Objects.equals(getKlichka(), zemnovodnie.getKlichka());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKlichka());
     }
 }

@@ -5,7 +5,7 @@ import ru.skypro.animals.Main;
 abstract class Birds extends Animal{
 
     private String area;
-    protected abstract void hunt();
+    protected void hunt() {};
 
     public Birds(String klichka, Integer numYears, String area) {
         super(klichka,numYears);
