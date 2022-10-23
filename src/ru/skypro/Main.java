@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args){
         String login = "1234", pass="43251", cpass="4321";
         try {
-            NewClass.method(login,pass,cpass);
+            Data.method(login,pass,cpass);
             System.out.println("Good");
         } catch (WrongLoginException | WrongPasswordException e) {
             System.out.println(e);

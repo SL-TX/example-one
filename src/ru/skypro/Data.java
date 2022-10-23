@@ -6,7 +6,7 @@ import ru.skypro.exceptions.WrongPasswordException;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class NewClass {
+public class Data {
 
     private static Boolean check(String string)
     {
