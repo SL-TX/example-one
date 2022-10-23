@@ -33,9 +33,7 @@ public class Car extends Transport implements Competitive{
     }
 
     @Override
-    public void diagnostic() throws DiagnosticFailException {
-        if (this.getEngineVolume()<2){
-            throw new DiagnosticFailException();
-        }
+    public Boolean diagnostic() {
+        return this.getEngineVolume() >= 2;
     }
 }

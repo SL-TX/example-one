@@ -56,8 +56,9 @@ public abstract class Transport {
         this.engineVolume = engineVolume;
     }
 
-    public void diagnostic() throws DiagnosticFailException {
+    public Boolean diagnostic() {
         System.out.println("Автобус … … … в диагностике не требуется");
+        return true;
     }
 
     public String getType() {
