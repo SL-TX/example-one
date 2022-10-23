@@ -25,13 +25,14 @@ public class Main {
         bus1.pitStop();
         bus1.bestTime();
         bus1.maxSpeed();
-        Driver<Car> driver1 = new Driver<>("F I O 1", true,5);
-        Driver<Transport> driver2 = new Driver<>("F I O 2", false,0);
-        Driver<Bus> driver3 = new Driver<>("F I O 3", true,9);
-        Driver<Truck> driver4 = new Driver<>("F I O 4", true,7);
-        driver1.refill(car1);
-        driver2.refill(car2);
-        driver3.refill(bus1);
-        driver4.refill(truck1);
+        Car car2c = (Car) car2;
+        Driver driver1 = new DriverB("F I O 1", true,5, car1);
+        Driver driver2 = new DriverB("F I O 2", false,0, car2c);
+        Driver driver3 = new DriverD("F I O 3", true,9, bus1);
+        Driver driver4 = new DriverC("F I O 4", true,7, truck1);
+        driver1.refill();
+        driver2.refill();
+        driver3.refill();
+        driver4.refill();
     }
 }
