@@ -1,5 +1,7 @@
 package ru.skypro.transport;
 
+import ru.skypro.exceptions.DiagnosticFailException;
+
 public class Truck extends Transport implements Competitive{
 
     public Truck(String brand, String model, Double engineVolume, TruckBody type) {
@@ -29,5 +31,12 @@ public class Truck extends Transport implements Competitive{
     @Override
     public void bestTime() {
         System.out.println("6.00");
+    }
+
+    @Override
+    public void diagnostic() throws DiagnosticFailException {
+        if (this.getEngineVolume()<2){
+            throw new DiagnosticFailException();
+        }
     }
 }

@@ -1,5 +1,7 @@
 package ru.skypro.transport;
 
+import ru.skypro.exceptions.DiagnosticFailException;
+
 public abstract class Transport {
     private String brand;
     private String model;
@@ -52,6 +54,10 @@ public abstract class Transport {
 
     public void setEngineVolume(Double engineVolume) {
         this.engineVolume = engineVolume;
+    }
+
+    public void diagnostic() throws DiagnosticFailException {
+        System.out.println("Автобус … … … в диагностике не требуется");
     }
 
     public String getType() {
