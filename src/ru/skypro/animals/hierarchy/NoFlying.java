@@ -38,16 +38,16 @@ public class NoFlying extends Birds {
         super.eat();
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof NoFlying noFlying)) return false;
-        return Objects.equals(getKlichka(), noFlying.getKlichka());
+        if (!super.equals(o)) return false;
+        return Objects.equals(getMoveType(), noFlying.getMoveType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKlichka());
+        return Objects.hash(super.hashCode(), getMoveType());
     }
 }

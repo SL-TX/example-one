@@ -2,6 +2,8 @@ package ru.skypro.animals.hierarchy;
 
 import ru.skypro.animals.Main;
 
+import java.util.Objects;
+
 abstract class Mlekopitaushie extends Animal{
     private String area;
     private Integer speed;
@@ -51,5 +53,18 @@ abstract class Mlekopitaushie extends Animal{
     @Override
     protected void go() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Mlekopitaushie that)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(getArea(), that.getArea()) && Objects.equals(getSpeed(), that.getSpeed());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getArea(), getSpeed());
     }
 }

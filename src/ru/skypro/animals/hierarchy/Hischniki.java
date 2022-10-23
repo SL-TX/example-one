@@ -42,11 +42,12 @@ public class Hischniki extends Mlekopitaushie{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Hischniki hischniki)) return false;
-        return Objects.equals(getKlichka(), hischniki.getKlichka());
+        if (!super.equals(o)) return false;
+        return Objects.equals(getTypeOfPisha(), hischniki.getTypeOfPisha());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKlichka());
+        return Objects.hash(super.hashCode(), getTypeOfPisha());
     }
 }

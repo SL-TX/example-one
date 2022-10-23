@@ -44,11 +44,12 @@ public class Flying extends Birds{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Flying flying)) return false;
-        return Objects.equals(getKlichka(), flying.getKlichka());
+        if (!super.equals(o)) return false;
+        return Objects.equals(getMoveType(), flying.getMoveType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKlichka());
+        return Objects.hash(super.hashCode(), getMoveType());
     }
 }

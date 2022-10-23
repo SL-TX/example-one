@@ -45,12 +45,13 @@ public class Zemnovodnie extends Animal{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Zemnovodnie zemnovodnie)) return false;
-        return Objects.equals(getKlichka(), zemnovodnie.getKlichka());
+        if (!(o instanceof Zemnovodnie that)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(getArea(), that.getArea());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKlichka());
+        return Objects.hash(super.hashCode(), getArea());
     }
 }

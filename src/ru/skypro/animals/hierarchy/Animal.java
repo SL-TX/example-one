@@ -2,6 +2,8 @@ package ru.skypro.animals.hierarchy;
 
 import ru.skypro.animals.Main;
 
+import java.util.Objects;
+
 abstract class Animal {
     private String klichka;
     private Integer numYears;
@@ -36,5 +38,17 @@ abstract class Animal {
 
     public void setNumYears(Integer numYears) {
         this.numYears = numYears;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animal animal)) return false;
+        return getKlichka().equals(animal.getKlichka()) && getNumYears().equals(animal.getNumYears());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKlichka(), getNumYears());
     }
 }

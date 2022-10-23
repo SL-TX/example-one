@@ -41,12 +41,13 @@ public class Travoyadnie extends Mlekopitaushie {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Travoyadnie travoyadnie)) return false;
-        return Objects.equals(getKlichka(), travoyadnie.getKlichka());
+        if (!(o instanceof Travoyadnie that)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(getTypeOfPisha(), that.getTypeOfPisha());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKlichka());
+        return Objects.hash(super.hashCode(), getTypeOfPisha());
     }
 }
