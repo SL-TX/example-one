@@ -3,8 +3,7 @@ package ru.skypro;
 import ru.skypro.exceptions.WrongRightsException;
 import ru.skypro.transport.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args){
@@ -48,7 +47,7 @@ public class Main {
         cars.get(3).addSponsor(sponsors.get(1));
         cars.get(0).addSponsor(sponsors.get(2));
         cars.get(1).addSponsor(sponsors.get(3));
-
+        var texhStantion = new TechStantion<>();
         for (Transport car: cars) {
             System.out.println(
                     "Для машины: " +car.toString()+"\n"+
@@ -56,7 +55,87 @@ public class Main {
                             "Спонсоры: " + car.getSponsorsList().toString()+"\n"+
                             "Механики: " + car.getMechanicList().toString()
             );
-
+            texhStantion.addToQueue(car);
         }
+        texhStantion.doTechOsmotr();
+        texhStantion.doTechOsmotr();
+        texhStantion.doTechOsmotr();
+        texhStantion.doTechOsmotr();
+        texhStantion.doTechOsmotr();
+
+        //Part 2
+        List<Queue<String>> q1 = new ArrayList<>();
+        q1.add(new ArrayDeque<>(5));
+        q1.add(new ArrayDeque<>(5));
+        q1.get(0).offer("11");
+        q1.get(0).offer("12");
+        q1.get(0).offer("13");
+        q1.get(0).offer("14");
+        q1.get(0).offer("15");
+        q1.get(1).offer("16");
+        addInSomeQueue(q1,"qs1");
+        addInSomeQueue(q1,"qs2");
+        addInSomeQueue(q1,"qs3");
+        addInSomeQueue(q1,"qs4");
+        addInSomeQueue(q1,"qs5");
+        addInSomeQueue(q1,"qs6");
+        addInSomeQueue(q1,"qs7");
+        addInSomeQueue(q1,"qs8");
+        addInSomeQueue(q1,"qs9");
+        removeFromSomeQueue(q1);
+        removeFromSomeQueue(q1);
+        removeFromSomeQueue(q1);
+        removeFromSomeQueue(q1);
+        for (var qqq: q1
+        ) {
+            System.out.println(qqq.size());
+        }
+
+        //Часть 3
+        List<List<String>> biDemArrList = new ArrayList<>();
+//        int ourNumber = biDemArrList.get(0).get(1)
+//        List> biDemArrList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            biDemArrList.add(i, new ArrayList<>());
+            for (int j = 0; j < 8; j++) {
+                biDemArrList.get(i).add(j, (i+j)%2==1?"●":"◯");
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(biDemArrList.get(i).get(j) + " ");
+            }
+            System.out.println("\n");
+        }
+    }
+
+    private static void addInSomeQueue(List<Queue<String>> q1, String val){
+        Queue<String> minindex;
+        int coun = 99;
+        boolean addded = false;
+        minindex=q1.get(0);
+        for (var qqq: q1
+             ) {
+            System.out.println(qqq.size());
+            if (qqq.size()==5) { continue;}
+            if (coun >= qqq.size()) {
+                coun = qqq.size();
+                minindex = qqq;
+                addded = true;
+            }
+        }
+        if (!addded){
+            System.out.println("полное заполнение всех очередей");
+            q1.add(new ArrayDeque<>(5));
+            minindex = q1.get(q1.size()-1);
+        }
+        minindex.offer(val);
+//        System.out.println(q1.get(0).size());
+//        System.out.println(q1.get(1).size());
+    }
+
+    private static void removeFromSomeQueue(List<Queue<String>> q1){
+        int num = (int) Math.round(Math.random()* (q1.size()-1));
+        q1.get(num).poll();
     }
 }
