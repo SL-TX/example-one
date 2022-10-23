@@ -1,5 +1,7 @@
 package ru.skypro.transport;
 
+import ru.skypro.exceptions.WrongRightsException;
+
 public abstract class Driver{
 
     private final Transport transport;
@@ -7,11 +9,15 @@ public abstract class Driver{
     private Boolean haveRights;
     private Integer stazh;
 
-    public Driver(String fio, Boolean haveRights, Integer stazh, Transport transport) {
+    public Driver(String fio, Boolean haveRights, Integer stazh, Transport transport) throws WrongRightsException {
         this.fio = fio;
         this.haveRights = haveRights;
         this.stazh = stazh;
-        this.transport = transport;
+        if (transport == null) {
+            throw new WrongRightsException();
+        } else {
+            this.transport = transport;
+        };
     }
 
     public void startMoving(){
