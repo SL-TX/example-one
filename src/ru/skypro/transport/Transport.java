@@ -1,6 +1,11 @@
 package ru.skypro.transport;
 
+import ru.skypro.Mechanic;
+import ru.skypro.Sponsor;
 import ru.skypro.exceptions.DiagnosticFailException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Transport {
     private String brand;
@@ -9,11 +14,43 @@ public abstract class Transport {
 
     private final Enum<?> type;
 
+    private List<Mechanic> mechanicList = new ArrayList<>();
+
+    private Driver driver;
+
+    private List<Sponsor> sponsorsList = new ArrayList<>();
+
     public Transport(String brand, String model, Double engineVolume, Enum<?> type) {
         this.brand = brand == null || brand.equals("") ? "default" : brand;
         this.model = model == null || model.equals("") ? "default" : model;
         this.engineVolume = (engineVolume == null || engineVolume<0) ? 1.6 : engineVolume;
         this.type = type;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public List<Mechanic> getMechanicList() {
+        return mechanicList;
+    }
+
+    public List<Sponsor> getSponsorsList() {
+        return sponsorsList;
+    }
+
+    public void addMechanic(Mechanic mechanic) {
+        if (mechanic.getListCarTypes().contains(this.getClass().getSimpleName())) {
+            this.mechanicList.add(mechanic);
+        } else System.out.println("Механик "+mechanic.getFirstName()+" "+mechanic.getLastName()+" не имеет нужной категории, для автомобиля "+this.brand+" "+this.model);
+    }
+
+    public void addSponsor(Sponsor sponsors) {
+        this.sponsorsList.add(sponsors);
     }
 
     public void startMoving(){

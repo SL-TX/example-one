@@ -30,4 +30,14 @@ public abstract class Driver{
     public void refill(){
         System.out.println("водитель "+fio+" управляет автомобилем "+transport.getBrand()+" "+transport.getModel()+" и будет участвовать в заезде");
     }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "transport=" + transport +
+                ", fio='" + fio + '\'' +
+                ", haveRights=" + haveRights +
+                ", stazh=" + stazh +
+                '}';
+    }
 }
