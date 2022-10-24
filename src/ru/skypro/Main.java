@@ -1,12 +1,12 @@
 package ru.skypro;
 
-import ru.skypro.exceptions.WrongRightsException;
-import ru.skypro.transport.*;
+import ru.skypro.products.Товар;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args){
+        /*
         List<Transport> cars = new ArrayList<>();
         List<Sponsor> sponsors = new ArrayList<>();
         List<Driver> drivers = new ArrayList<>();
@@ -106,6 +106,42 @@ public class Main {
                 System.out.print(biDemArrList.get(i).get(j) + " ");
             }
             System.out.println("\n");
+        }
+         */
+        Set<Товар> СписокТоваров = new HashSet<>();
+        Товар Бананы = new Товар("Банан", 120,10);
+        Товар Апельсины = new Товар("Апельсин", 240,10);
+        try {
+            Товар Тест = new Товар("Тест", 240,null);
+        } catch (RuntimeException e){
+            System.out.println(e);
+        }
+        try {
+        addToSet(СписокТоваров,Бананы);
+        addToSet(СписокТоваров,Апельсины);
+        addToSet(СписокТоваров,Бананы);
+        } catch (RuntimeException e){
+            System.out.println(e);
+        }
+        try {
+            remFromSet(СписокТоваров,Бананы);
+            remFromSet(СписокТоваров,Бананы);
+        } catch (RuntimeException e){
+            System.out.println(e);
+        }
+        System.out.println(List.of(СписокТоваров.toArray()));
+
+    }
+
+    private static void addToSet(Set<Товар> set, Товар val){
+        if (!set.add(val)){
+            throw new RuntimeException("необходимо выбросить исключение");
+        }
+    }
+
+    private static void remFromSet(Set<Товар> set, Товар val){
+        if(!set.remove(val)){
+            throw new RuntimeException("Ошибка удаления товара");
         }
     }
 
