@@ -1,23 +1,21 @@
 package ru.skypro.products;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Рецепт {
 
-    Set<Товар> МножествоПродуктов = new HashSet<>();
+    Map<Товар,Integer> МножествоПродуктов = new HashMap<>();
     private final String Название;
     public Integer СуммарнаяСтоимостьПродуктов(){
         int i=0;
-        for (Товар товар :МножествоПродуктов) {
-            i+=товар.getЦена();
+        for (Map.Entry<Товар,Integer> товар:МножествоПродуктов.entrySet()) {
+
+            i+=товар.getKey().getЦена()*товар.getValue();
         }
         return i;
     }
 
-    public Рецепт(Set<Товар> множествоПродуктов, String название) {
-        МножествоПродуктов = множествоПродуктов;
+    public Рецепт(String название) {
         Название = название;
     }
 
@@ -30,8 +28,11 @@ public class Рецепт {
                 '}';
     }
 
-    public void addToSet(Товар val){
-        МножествоПродуктов.add(val);
+    public void addToSet(Товар val,Integer count){
+        if (count<1){
+            throw new RuntimeException("Количество продукта в рецепте не может быть меньше 1.");
+        }
+        МножествоПродуктов.put(val,count);
     }
     public void remFromSet(Товар val){
         МножествоПродуктов.remove(val);
