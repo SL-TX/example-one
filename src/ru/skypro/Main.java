@@ -1,5 +1,6 @@
 package ru.skypro;
 
+import ru.skypro.products.Рецепт;
 import ru.skypro.products.Товар;
 
 import java.util.*;
@@ -130,16 +131,35 @@ public class Main {
             System.out.println(e);
         }
         System.out.println(List.of(СписокТоваров.toArray()));
+        addToSet(СписокТоваров,Бананы);
+        Set<Рецепт> СписокРецептов = new HashSet<>();
+        Рецепт рецепт1 = new Рецепт(СписокТоваров,"Рецепт 1");
+        Рецепт рецепт2 = new Рецепт(СписокТоваров,"Рецепт 2");
+        try {
+            addToSet(СписокРецептов,рецепт1);
+            addToSet(СписокРецептов,рецепт2);
+            addToSet(СписокРецептов,рецепт1);
+        } catch (RuntimeException e){
+            System.out.println(e);
+        }
+        System.out.println(List.of(СписокРецептов.toArray()));
+        Set<Integer> МножествоЦелыхЧисел = new HashSet<>();
+        for (int i=0;i<20;i++){
+            МножествоЦелыхЧисел.add((int) Math.round(Math.random()*1000));
+        }
+        System.out.println(List.of(МножествоЦелыхЧисел.toArray()));
+        МножествоЦелыхЧисел.removeIf(i ->  i % 2 == 1);
+        System.out.println(List.of(МножествоЦелыхЧисел.toArray()));
 
     }
 
-    private static void addToSet(Set<Товар> set, Товар val){
+    private static <T> void addToSet(Set<T> set, T val){
         if (!set.add(val)){
             throw new RuntimeException("необходимо выбросить исключение");
         }
     }
 
-    private static void remFromSet(Set<Товар> set, Товар val){
+    private static <T> void remFromSet(Set<T> set, T val){
         if(!set.remove(val)){
             throw new RuntimeException("Ошибка удаления товара");
         }
