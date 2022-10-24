@@ -1,114 +1,95 @@
 package ru.skypro;
 
+import ru.skypro.exceptions.WrongRightsException;
 import ru.skypro.products.Рецепт;
 import ru.skypro.products.Товар;
+import ru.skypro.transport.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args){
-        /*
-        List<Transport> cars = new ArrayList<>();
-        List<Sponsor> sponsors = new ArrayList<>();
-        List<Driver> drivers = new ArrayList<>();
+        Set<Transport> cars = new HashSet<>();
+        Set<Sponsor> sponsors = new HashSet<>();
+        Set<Driver> drivers = new HashSet<>();
+        var car1 = new Car("ad1","asd",2.2,CarBody.Универсал);
+        var car2 = new Car("as2","a6sd",2.2,CarBody.Универсал);
+        var car3 = new Bus("as3","a7sd",2.2, BusType.малая);
+        var car4 = new Truck("ag4","8asd",2.2,TruckBody.N2);
 
-        cars.add(new Car("ad1","asd",2.2,CarBody.Универсал));
-        cars.add(new Car("as2","a6sd",2.2,CarBody.Универсал));
-        cars.add(new Bus("as3","a7sd",2.2,BusType.малая));
-        cars.add(new Truck("ag4","8asd",2.2,TruckBody.N2));
+        addToSet(cars,car1);
+        addToSet(cars,car2);
+        addToSet(cars,car3);
+        addToSet(cars,car4);
 
-        sponsors.add(new Sponsor("asdf1", 1234));
-        sponsors.add(new Sponsor("asdf2", 12345));
-        sponsors.add(new Sponsor("asdf3", 123465));
-        sponsors.add(new Sponsor("asdf4", 1234567));
+        var sponsor1 = new Sponsor("asdf1", 1234);
+        var sponsor2 = new Sponsor("asdf2", 12345);
+        var sponsor3 = new Sponsor("asdf3", 123465);
+        var sponsor4 = new Sponsor("asdf4", 1234567);
+
+        addToSet(sponsors,sponsor1);
+        addToSet(sponsors,sponsor2);
+        addToSet(sponsors,sponsor3);
+        addToSet(sponsors,sponsor4);
+
+        Driver driver1 = null;
+        Driver driver2 = null;
+        Driver driver3 = null;
+        Driver driver4 = null;
+
         try {
-            drivers.add(new DriverB("asd1", true, 2, (Car) cars.get(0)));
-            drivers.add(new DriverB("asd2", true, 2, (Car) cars.get(1)));
-            drivers.add(new DriverD("asd3", true, 2, (Bus) cars.get(2)));
-            drivers.add(new DriverC("asd4", true, 2, (Truck) cars.get(3)));
+            driver1 = new DriverB("asd1", true, 2, car1);
+            driver2 = new DriverB("asd2", true, 2, car2);
+            driver3 = new DriverD("asd3", true, 2, car3);
+            driver4 = new DriverC("asd4", true, 2, car4);
+
+            addToSet(drivers,driver1);
+            addToSet(drivers,driver2);
+            addToSet(drivers,driver3);
+            addToSet(drivers,driver4);
         }
         catch (WrongRightsException e){
             System.out.println(e);
         }
+        Set<Mechanic> setMechanic = new HashSet<>();
         Mechanic mech1 = new Mechanic("a","b","asd",List.of("Car"));
         Mechanic mech2 = new Mechanic("c","d","dsa",List.of("Bus","Truck"));
 
-        cars.get(0).addMechanic(mech1);
-        cars.get(1).addMechanic(mech1);
-        cars.get(2).addMechanic(mech1);
-        cars.get(2).addMechanic(mech2);
-        cars.get(3).addMechanic(mech2);
-        cars.get(0).setDriver(drivers.get(0));
-        cars.get(1).setDriver(drivers.get(1));
-        cars.get(2).setDriver(drivers.get(2));
-        cars.get(3).setDriver(drivers.get(3));
-        cars.get(0).addSponsor(sponsors.get(0));
-        cars.get(1).addSponsor(sponsors.get(1));
-        cars.get(2).addSponsor(sponsors.get(0));
-        cars.get(3).addSponsor(sponsors.get(1));
-        cars.get(0).addSponsor(sponsors.get(2));
-        cars.get(1).addSponsor(sponsors.get(3));
-        var texhStantion = new TechStantion<>();
-        for (Transport car: cars) {
-            System.out.println(
-                    "Для машины: " +car.toString()+"\n"+
-                            "Водитель: " + car.getDriver().toString()+"\n"+
-                            "Спонсоры: " + car.getSponsorsList().toString()+"\n"+
-                            "Механики: " + car.getMechanicList().toString()
-            );
-            texhStantion.addToQueue(car);
-        }
-        texhStantion.doTechOsmotr();
-        texhStantion.doTechOsmotr();
-        texhStantion.doTechOsmotr();
-        texhStantion.doTechOsmotr();
-        texhStantion.doTechOsmotr();
+        addToSet(setMechanic,mech1);
+        addToSet(setMechanic,mech2);
 
-        //Part 2
-        List<Queue<String>> q1 = new ArrayList<>();
-        q1.add(new ArrayDeque<>(5));
-        q1.add(new ArrayDeque<>(5));
-        q1.get(0).offer("11");
-        q1.get(0).offer("12");
-        q1.get(0).offer("13");
-        q1.get(0).offer("14");
-        q1.get(0).offer("15");
-        q1.get(1).offer("16");
-        addInSomeQueue(q1,"qs1");
-        addInSomeQueue(q1,"qs2");
-        addInSomeQueue(q1,"qs3");
-        addInSomeQueue(q1,"qs4");
-        addInSomeQueue(q1,"qs5");
-        addInSomeQueue(q1,"qs6");
-        addInSomeQueue(q1,"qs7");
-        addInSomeQueue(q1,"qs8");
-        addInSomeQueue(q1,"qs9");
-        removeFromSomeQueue(q1);
-        removeFromSomeQueue(q1);
-        removeFromSomeQueue(q1);
-        removeFromSomeQueue(q1);
-        for (var qqq: q1
-        ) {
-            System.out.println(qqq.size());
-        }
+        car1.addMechanic(mech1);
+        car2.addMechanic(mech1);
+        car3.addMechanic(mech1);
+        car3.addMechanic(mech2);
+        car4.addMechanic(mech2);
+        car1.setDriver(driver1);
+        car2.setDriver(driver2);
+        car3.setDriver(driver3);
+        car4.setDriver(driver4);
+        car1.addSponsor(sponsor1);
+        car2.addSponsor(sponsor2);
+        car3.addSponsor(sponsor1);
+        car4.addSponsor(sponsor2);
+        car1.addSponsor(sponsor3);
+        car2.addSponsor(sponsor4);
+//        var texhStantion = new TechStantion<>();
+//        for (Transport car: cars) {
+//            System.out.println(
+//                    "Для машины: " +car.toString()+"\n"+
+//                            "Водитель: " + car.getDriver().toString()+"\n"+
+//                            "Спонсоры: " + car.getSponsorsList().toString()+"\n"+
+//                            "Механики: " + car.getMechanicList().toString()
+//            );
+//            texhStantion.addToQueue(car);
+//        }
+//        texhStantion.doTechOsmotr();
+//        texhStantion.doTechOsmotr();
+//        texhStantion.doTechOsmotr();
+//        texhStantion.doTechOsmotr();
+//        texhStantion.doTechOsmotr();
 
-        //Часть 3
-        List<List<String>> biDemArrList = new ArrayList<>();
-//        int ourNumber = biDemArrList.get(0).get(1)
-//        List> biDemArrList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            biDemArrList.add(i, new ArrayList<>());
-            for (int j = 0; j < 8; j++) {
-                biDemArrList.get(i).add(j, (i+j)%2==1?"●":"◯");
-            }
-        }
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                System.out.print(biDemArrList.get(i).get(j) + " ");
-            }
-            System.out.println("\n");
-        }
-         */
         Set<Товар> СписокТоваров = new HashSet<>();
         Товар Бананы = new Товар("Банан", 120,10);
         Товар Апельсины = new Товар("Апельсин", 240,10);
@@ -151,7 +132,56 @@ public class Main {
         МножествоЦелыхЧисел.removeIf(i ->  i % 2 == 1);
         System.out.println(List.of(МножествоЦелыхЧисел.toArray()));
 
+        for (var element:sponsors) {
+            System.out.println(element);
+        }
+        for (var element:cars) {
+            System.out.println(element);
+        }
+        for (var element:drivers) {
+            System.out.println(element);
+        }
+        for (var element:setMechanic) {
+            System.out.println(element);
+        }
+        //part 2
+        Set<String> uniqueQuestion = new HashSet<>();
+        do {
+            Random r = new Random();
+            int int1 = r.nextInt(7)+2;
+            int int2 = r.nextInt(7)+2;
+            uniqueQuestion.add(int1 + "*" + int2);
+
+        } while (uniqueQuestion.size()<=14);//numRows - 1
+        for (var element:uniqueQuestion) {
+            System.out.println(element);
+        }
+        //part 3
+
+        Passport passport1 = new Passport("1234","1234","1234","1234","12.12.12");
+        Passport passport2 = new Passport("4321","4321","4321","4321","01.12.12");
+        HashMap<String,Passport> passportHashMap = new HashMap<>();
+        passportHashMap.put(passport1.getНомерПаспорта(),passport1);
+        passportHashMap.put(passport2.getНомерПаспорта(),passport2);
+        passportHashMap.put(passport1.getНомерПаспорта(),passport1);
+        Passport passport3 = new Passport("1234","1234","4321","1234","12.01.12");
+        savePassport(passportHashMap,passport3);
+        System.out.println(getPassport(passportHashMap,"1234"));
+
     }
+
+    public static void savePassport(Map<String, Passport> refMap, Passport passport){
+        if (refMap.containsKey(passport.getНомерПаспорта())){
+            refMap.remove(passport.getНомерПаспорта());
+            refMap.put(passport.getНомерПаспорта(), passport);
+        } else
+            refMap.put(passport.getНомерПаспорта(), passport);
+    }
+
+    public static Passport getPassport(Map<String,Passport> refMap, String key){
+        return refMap.getOrDefault(key, null);
+    }
+
 
     private static <T> void addToSet(Set<T> set, T val){
         if (!set.add(val)){
