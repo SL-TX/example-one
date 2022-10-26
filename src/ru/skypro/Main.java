@@ -1,12 +1,11 @@
 package ru.skypro;
 
 import ru.skypro.exceptions.WrongRightsException;
-import ru.skypro.products.Рецепт;
-import ru.skypro.products.Товар;
+import ru.skypro.products.Recept;
+import ru.skypro.products.Tovar;
 import ru.skypro.transport.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args){
@@ -90,47 +89,47 @@ public class Main {
 //        texhStantion.doTechOsmotr();
 //        texhStantion.doTechOsmotr();
 
-        Set<Товар> СписокТоваров = new HashSet<>();
-        Товар Бананы = new Товар("Банан", 120,10);
-        Товар Апельсины = new Товар("Апельсин", 240,10);
+        Set<Tovar> SpisokTovarov = new HashSet<>();
+        Tovar Banan = new Tovar("Банан", 120,10);
+        Tovar Apelsin = new Tovar("Апельсин", 240,10);
         try {
-            Товар Тест = new Товар("Тест", 240,null);
+            Tovar test = new Tovar("Тест", 240,null);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-        addToSet(СписокТоваров,Бананы);
-        addToSet(СписокТоваров,Апельсины);
-        addToSet(СписокТоваров,Бананы);
+        addToSet(SpisokTovarov,Banan);
+        addToSet(SpisokTovarov,Apelsin);
+        addToSet(SpisokTovarov,Banan);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-            remFromSet(СписокТоваров,Бананы);
-            remFromSet(СписокТоваров,Бананы);
+            remFromSet(SpisokTovarov,Banan);
+            remFromSet(SpisokTovarov,Banan);
         } catch (RuntimeException e){
             System.out.println(e);
         }
-        System.out.println(List.of(СписокТоваров.toArray()));
-        addToSet(СписокТоваров,Бананы);
-        Set<Рецепт> СписокРецептов = new HashSet<>();
-        Рецепт рецепт1 = new Рецепт(СписокТоваров,"Рецепт 1");
-        Рецепт рецепт2 = new Рецепт(СписокТоваров,"Рецепт 2");
+        System.out.println(List.of(SpisokTovarov.toArray()));
+        addToSet(SpisokTovarov,Banan);
+        Set<Recept> SpisokReceptov = new HashSet<>();
+        Recept recept1 = new Recept(SpisokTovarov,"Рецепт 1");
+        Recept recept2 = new Recept(SpisokTovarov,"Рецепт 2");
         try {
-            addToSet(СписокРецептов,рецепт1);
-            addToSet(СписокРецептов,рецепт2);
-            addToSet(СписокРецептов,рецепт1);
+            addToSet(SpisokReceptov, recept1);
+            addToSet(SpisokReceptov, recept2);
+            addToSet(SpisokReceptov, recept1);
         } catch (RuntimeException e){
             System.out.println(e);
         }
-        System.out.println(List.of(СписокРецептов.toArray()));
-        Set<Integer> МножествоЦелыхЧисел = new HashSet<>();
+        System.out.println(List.of(SpisokReceptov.toArray()));
+        Set<Integer> manyIntVals = new HashSet<>();
         for (int i=0;i<20;i++){
-            МножествоЦелыхЧисел.add((int) Math.round(Math.random()*1000));
+            manyIntVals.add((int) Math.round(Math.random()*1000));
         }
-        System.out.println(List.of(МножествоЦелыхЧисел.toArray()));
-        МножествоЦелыхЧисел.removeIf(i ->  i % 2 == 1);
-        System.out.println(List.of(МножествоЦелыхЧисел.toArray()));
+        System.out.println(List.of(manyIntVals.toArray()));
+        manyIntVals.removeIf(i ->  i % 2 == 1);
+        System.out.println(List.of(manyIntVals.toArray()));
 
         for (var element:sponsors) {
             System.out.println(element);
@@ -161,9 +160,9 @@ public class Main {
         Passport passport1 = new Passport("1234","1234","1234","1234","12.12.12");
         Passport passport2 = new Passport("4321","4321","4321","4321","01.12.12");
         HashMap<String,Passport> passportHashMap = new HashMap<>();
-        passportHashMap.put(passport1.getНомерПаспорта(),passport1);
-        passportHashMap.put(passport2.getНомерПаспорта(),passport2);
-        passportHashMap.put(passport1.getНомерПаспорта(),passport1);
+        passportHashMap.put(passport1.getNumPassport(),passport1);
+        passportHashMap.put(passport2.getNumPassport(),passport2);
+        passportHashMap.put(passport1.getNumPassport(),passport1);
         Passport passport3 = new Passport("1234","1234","4321","1234","12.01.12");
         savePassport(passportHashMap,passport3);
         System.out.println(getPassport(passportHashMap,"1234"));
@@ -171,11 +170,11 @@ public class Main {
     }
 
     public static void savePassport(Map<String, Passport> refMap, Passport passport){
-        if (refMap.containsKey(passport.getНомерПаспорта())){
-            refMap.remove(passport.getНомерПаспорта());
-            refMap.put(passport.getНомерПаспорта(), passport);
+        if (refMap.containsKey(passport.getNumPassport())){
+            refMap.remove(passport.getNumPassport());
+            refMap.put(passport.getNumPassport(), passport);
         } else
-            refMap.put(passport.getНомерПаспорта(), passport);
+            refMap.put(passport.getNumPassport(), passport);
     }
 
     public static Passport getPassport(Map<String,Passport> refMap, String key){
