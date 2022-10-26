@@ -1,57 +1,57 @@
 package ru.skypro;
 
-import ru.skypro.products.Рецепт;
-import ru.skypro.products.Товар;
+import ru.skypro.products.Recept;
+import ru.skypro.products.Tovar;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args){
-        Map<String,String> ТелефонныйСправочник = new HashMap<>();
+        Map<String,String> TelefonniiSpravochnik = new HashMap<>();
         for (int i=0;i<=20;i++) {
-            ТелефонныйСправочник.put("f"+i+" i"+i,i+""+i);
+            TelefonniiSpravochnik.put("f"+i+" i"+i,i+""+i);
         }
-        System.out.println(ТелефонныйСправочник);
+        System.out.println(TelefonniiSpravochnik);
         //Part2
-        Set<Товар> СписокТоваров = new HashSet<>();
-        Товар Бананы = new Товар("Банан", 120,10);
-        Товар Апельсины = new Товар("Апельсин", 240,10);
+        Set<Tovar> SpisokTovarov = new HashSet<>();
+        Tovar Banan = new Tovar("Банан", 120,10);
+        Tovar Apelsin = new Tovar("Апельсин", 240,10);
         try {
-            Товар Тест = new Товар("Тест", 240,null);
+            Tovar test = new Tovar("Тест", 240,null);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-            addToSet(СписокТоваров,Бананы);
-            addToSet(СписокТоваров,Апельсины);
-            addToSet(СписокТоваров,Бананы);
+            addToSet(SpisokTovarov,Banan);
+            addToSet(SpisokTovarov,Apelsin);
+            addToSet(SpisokTovarov,Banan);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-            remFromSet(СписокТоваров,Бананы);
-            remFromSet(СписокТоваров,Бананы);
+            remFromSet(SpisokTovarov,Banan);
+            remFromSet(SpisokTovarov,Banan);
         } catch (RuntimeException e){
             System.out.println(e);
         }
-        System.out.println(List.of(СписокТоваров.toArray()));
-        addToSet(СписокТоваров,Бананы);
-        Set<Рецепт> СписокРецептов = new HashSet<>();
-        Рецепт рецепт1 = new Рецепт("Рецепт 1");
-        Рецепт рецепт2 = new Рецепт("Рецепт 2");
-        рецепт1.addToSet(Бананы,2);
-        рецепт1.addToSet(Апельсины,1);
-        рецепт2.addToSet(Бананы,1);
-        рецепт2.addToSet(Апельсины,3);
+        System.out.println(List.of(SpisokTovarov.toArray()));
+        addToSet(SpisokTovarov,Banan);
+        Set<Recept> SpisokReceptov = new HashSet<>();
+        Recept recept1 = new Recept("Рецепт 1");
+        Recept recept2 = new Recept("Рецепт 2");
+        recept1.addToSet(Banan,2);
+        recept1.addToSet(Apelsin,1);
+        recept2.addToSet(Banan,1);
+        recept2.addToSet(Apelsin,3);
         try {
-            addToSet(СписокРецептов,рецепт1);
-            addToSet(СписокРецептов,рецепт2);
-            addToSet(СписокРецептов,рецепт1);
+            addToSet(SpisokReceptov, recept1);
+            addToSet(SpisokReceptov, recept2);
+            addToSet(SpisokReceptov, recept1);
         } catch (RuntimeException e){
             System.out.println(e);
         }
-        System.out.println(List.of(СписокРецептов.toArray()));
+        System.out.println(List.of(SpisokReceptov.toArray()));
         //part3
         collection.put("str1",2);
         addToCollection("str2",1);

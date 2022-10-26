@@ -3,32 +3,32 @@ package ru.skypro;
 import java.util.Objects;
 
 public class Passport {
-    private final String НомерПаспорта;
-    private final String Фамилия;
-    private final String Имя;
-    private final String Отчество;
-    private final String ДатаРождения;
+    private final String NomerPasporta;
+    private final String Familia;
+    private final String Imya;
+    private final String Otchestvo;
+    private final String DataRozhdenia;
 
-    public Passport(String номерПаспорта, String фамилия, String имя, String отчество, String датаРождения) {
-        НомерПаспорта = номерПаспорта;
-        Фамилия = фамилия;
-        Имя = имя;
-        Отчество = отчество;
-        ДатаРождения = датаРождения;
+    public Passport(String nomerPasporta, String familia, String imya, String otchestvo, String dataRozhdenia) {
+        NomerPasporta = nomerPasporta;
+        Familia = familia;
+        Imya = imya;
+        Otchestvo = otchestvo;
+        DataRozhdenia = dataRozhdenia;
     }
 
-    public String getНомерПаспорта() {
-        return НомерПаспорта;
+    public String getNomerPasporta() {
+        return NomerPasporta;
     }
 
     @Override
     public String toString() {
         return "Passport{" +
-                "НомерПаспорта='" + НомерПаспорта + '\'' +
-                ", Фамилия='" + Фамилия + '\'' +
-                ", Имя='" + Имя + '\'' +
-                ", Отчество='" + Отчество + '\'' +
-                ", ДатаРождения='" + ДатаРождения + '\'' +
+                "НомерПаспорта='" + NomerPasporta + '\'' +
+                ", Фамилия='" + Familia + '\'' +
+                ", Имя='" + Imya + '\'' +
+                ", Отчество='" + Otchestvo + '\'' +
+                ", ДатаРождения='" + DataRozhdenia + '\'' +
                 '}';
     }
 
@@ -36,11 +36,11 @@ public class Passport {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Passport passport)) return false;
-        return Objects.equals(НомерПаспорта, passport.НомерПаспорта);
+        return Objects.equals(NomerPasporta, passport.NomerPasporta);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(НомерПаспорта);
+        return Objects.hash(NomerPasporta);
     }
 }
