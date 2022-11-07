@@ -9,14 +9,14 @@ public abstract class Driver<T extends Transport & Competitive>{
 
     private final T transport;
 
-    public Driver(String fullName, Boolean haveRights, Integer experience, Transport transport) throws WrongRightsException {
+    public Driver(String fullName, Boolean haveRights, Integer experience, T transport) throws WrongRightsException {
         this.fullName = fullName;
         this.haveRights = haveRights;
         this.experience = experience;
         if (transport == null) {
             throw new WrongRightsException();
         } else {
-            this.transport = (T) transport;
+            this.transport = transport;
         };
     }
 
