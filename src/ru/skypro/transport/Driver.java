@@ -5,14 +5,14 @@ import ru.skypro.exceptions.WrongRightsException;
 public abstract class Driver{
 
     private final Transport transport;
-    private String fio;
+    private String fullName;
     private Boolean haveRights;
-    private Integer stazh;
+    private Integer experience;
 
-    public Driver(String fio, Boolean haveRights, Integer stazh, Transport transport) throws WrongRightsException {
-        this.fio = fio;
+    public Driver(String fullName, Boolean haveRights, Integer experience, Transport transport) throws WrongRightsException {
+        this.fullName = fullName;
         this.haveRights = haveRights;
-        this.stazh = stazh;
+        this.experience = experience;
         if (transport == null) {
             throw new WrongRightsException();
         } else {
@@ -28,16 +28,16 @@ public abstract class Driver{
 
     }
     public void refill(){
-        System.out.println("водитель "+fio+" управляет автомобилем "+transport.getBrand()+" "+transport.getModel()+" и будет участвовать в заезде");
+        System.out.println("водитель "+ fullName +" управляет автомобилем "+transport.getBrand()+" "+transport.getModel()+" и будет участвовать в заезде");
     }
 
     @Override
     public String toString() {
         return "Driver{" +
                 "transport=" + transport +
-                ", fio='" + fio + '\'' +
+                ", fio='" + fullName + '\'' +
                 ", haveRights=" + haveRights +
-                ", stazh=" + stazh +
+                ", stazh=" + experience +
                 '}';
     }
 }

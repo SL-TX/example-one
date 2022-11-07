@@ -31,7 +31,7 @@ public class Mechanic {
         return listCarTypes;
     }
 
-    private void provestiTechObsluzhivanie(){
+    private void carryOutMaintenance(){
 
     }
     private void repairCar(){

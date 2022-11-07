@@ -2,7 +2,7 @@ package ru.skypro;
 
 import ru.skypro.exceptions.WrongRightsException;
 import ru.skypro.products.Recept;
-import ru.skypro.products.Tovar;
+import ru.skypro.products.Product;
 import ru.skypro.transport.*;
 
 import java.util.*;
@@ -12,9 +12,9 @@ public class Main {
         Set<Transport> cars = new HashSet<>();
         Set<Sponsor> sponsors = new HashSet<>();
         Set<Driver> drivers = new HashSet<>();
-        var car1 = new Car("ad1","asd",2.2,CarBody.Универсал);
-        var car2 = new Car("as2","a6sd",2.2,CarBody.Универсал);
-        var car3 = new Bus("as3","a7sd",2.2, BusType.малая);
+        var car1 = new Car("ad1","asd",2.2,CarBody.CROSSOVER);
+        var car2 = new Car("as2","a6sd",2.2,CarBody.CROSSOVER);
+        var car3 = new Bus("as3","a7sd",2.2, BusType.SMALL);
         var car4 = new Truck("ag4","8asd",2.2,TruckBody.N2);
 
         addToSet(cars,car1);
@@ -89,32 +89,32 @@ public class Main {
 //        texhStantion.doTechOsmotr();
 //        texhStantion.doTechOsmotr();
 
-        Set<Tovar> SpisokTovarov = new HashSet<>();
-        Tovar Banan = new Tovar("Банан", 120,10);
-        Tovar Apelsin = new Tovar("Апельсин", 240,10);
+        Set<Product> setOfProducts = new HashSet<>();
+        Product banana = new Product("Банан", 120,10);
+        Product orange = new Product("Апельсин", 240,10);
         try {
-            Tovar test = new Tovar("Тест", 240,null);
+            Product test = new Product("Тест", 240,null);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-        addToSet(SpisokTovarov,Banan);
-        addToSet(SpisokTovarov,Apelsin);
-        addToSet(SpisokTovarov,Banan);
+        addToSet(setOfProducts,banana);
+        addToSet(setOfProducts,orange);
+        addToSet(setOfProducts,banana);
         } catch (RuntimeException e){
             System.out.println(e);
         }
         try {
-            remFromSet(SpisokTovarov,Banan);
-            remFromSet(SpisokTovarov,Banan);
+            remFromSet(setOfProducts,banana);
+            remFromSet(setOfProducts,banana);
         } catch (RuntimeException e){
             System.out.println(e);
         }
-        System.out.println(List.of(SpisokTovarov.toArray()));
-        addToSet(SpisokTovarov,Banan);
+        System.out.println(List.of(setOfProducts.toArray()));
+        addToSet(setOfProducts,banana);
         Set<Recept> SpisokReceptov = new HashSet<>();
-        Recept recept1 = new Recept(SpisokTovarov,"Рецепт 1");
-        Recept recept2 = new Recept(SpisokTovarov,"Рецепт 2");
+        Recept recept1 = new Recept(setOfProducts,"Рецепт 1");
+        Recept recept2 = new Recept(setOfProducts,"Рецепт 2");
         try {
             addToSet(SpisokReceptov, recept1);
             addToSet(SpisokReceptov, recept2);

@@ -6,17 +6,17 @@ import java.util.Set;
 
 public class Recept {
 
-    Set<Tovar> setProducts = new HashSet<>();
+    Set<Product> setProducts = new HashSet<>();
     private final String name;
-    public Integer SumCostTovar(){
+    public Integer SumCostProducts(){
         int i=0;
-        for (Tovar tovar : setProducts) {
-            i+= tovar.getCost();
+        for (Product product : setProducts) {
+            i+= product.getCost();
         }
         return i;
     }
 
-    public Recept(Set<Tovar> setProducts, String name) {
+    public Recept(Set<Product> setProducts, String name) {
         this.setProducts = setProducts;
         this.name = name;
     }
@@ -26,14 +26,14 @@ public class Recept {
         return "Рецепт{" +
                 "МножествоПродуктов=" + setProducts +
                 ", Название='" + name + '\'' +
-                ", СуммарнаяСтоимостьПродуктов='" + SumCostTovar() + '\'' +
+                ", СуммарнаяСтоимостьПродуктов='" + SumCostProducts() + '\'' +
                 '}';
     }
 
-    public void addToSet(Tovar val){
+    public void addToSet(Product val){
         setProducts.add(val);
     }
-    public void remFromSet(Tovar val){
+    public void remFromSet(Product val){
         setProducts.remove(val);
     }
 

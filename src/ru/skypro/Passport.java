@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Passport {
     private final String numPassport;
-    private final String fam;
-    private final String im;
-    private final String otch;
-    private final String dataRozhdeniya;
+    private final String lastName;
+    private final String firstName;
+    private final String secondName;
+    private final String birthDate;
 
-    public Passport(String numPassport, String fam, String im, String otch, String dataRozhdeniya) {
+    public Passport(String numPassport, String lastName, String firstName, String secondName, String birthDate) {
         this.numPassport = numPassport;
-        this.fam = fam;
-        this.im = im;
-        this.otch = otch;
-        this.dataRozhdeniya = dataRozhdeniya;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.birthDate = birthDate;
     }
 
     public String getNumPassport() {
@@ -25,10 +25,10 @@ public class Passport {
     public String toString() {
         return "Passport{" +
                 "НомерПаспорта='" + numPassport + '\'' +
-                ", Фамилия='" + fam + '\'' +
-                ", Имя='" + im + '\'' +
-                ", Отчество='" + otch + '\'' +
-                ", ДатаРождения='" + dataRozhdeniya + '\'' +
+                ", Фамилия='" + lastName + '\'' +
+                ", Имя='" + firstName + '\'' +
+                ", Отчество='" + secondName + '\'' +
+                ", ДатаРождения='" + birthDate + '\'' +
                 '}';
     }
 

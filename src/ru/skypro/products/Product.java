@@ -2,13 +2,13 @@ package ru.skypro.products;
 
 import java.util.Objects;
 
-public class Tovar {
+public class Product {
 
     private final String name;
     private final Integer cost;
     private final Integer weight;
 
-    public Tovar(String name, Integer cost, Integer weight) {
+    public Product(String name, Integer cost, Integer weight) {
         if (name == null|| cost == null || weight == null){
             throw new RuntimeException("Заполните карточку товара полностью");
         }
@@ -41,8 +41,8 @@ public class Tovar {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Tovar tovar)) return false;
-        return Objects.equals(cost, tovar.cost) && Objects.equals(weight, tovar.weight);
+        if (!(o instanceof Product product)) return false;
+        return Objects.equals(cost, product.cost) && Objects.equals(weight, product.weight);
     }
 
     @Override

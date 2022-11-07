@@ -2,10 +2,10 @@ package ru.skypro.transport;
 
 public enum BusType {
 
-    особо_малая ,
-    малая ,
-    средняя,
-    большая,
-    особо_большая
+    VERY_SMALL,
+    SMALL,
+    NORMAL,
+    BIG,
+    VERY_BIG
 
     }

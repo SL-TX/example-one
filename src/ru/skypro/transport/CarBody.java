@@ -1,15 +1,13 @@
 package ru.skypro.transport;
 
 public enum CarBody {
-    
-    Седан,
-            Хетчбек,
-            Купе,
-            Универсал,
-            Внедорожник,
-            Кроссовер,
-            Пикап,
-            Фургон,
-            Минивэн
-
+        SEDAN,
+        HATCHBACK,
+        COMPARTMENT,
+        STATION_WAGON,
+        OFF_ROAD_VEHICLE,
+        CROSSOVER,
+        PICKUP_TRUCK,
+        VAN,
+        MINIVAN
 }
