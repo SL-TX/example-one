@@ -2,12 +2,12 @@ package ru.skypro.transport;
 
 import ru.skypro.exceptions.WrongRightsException;
 
-public abstract class Driver{
-
-    private final Transport transport;
+public abstract class Driver<T extends Transport & Competitive>{
     private String fullName;
     private Boolean haveRights;
     private Integer experience;
+
+    private final T transport;
 
     public Driver(String fullName, Boolean haveRights, Integer experience, Transport transport) throws WrongRightsException {
         this.fullName = fullName;
@@ -16,7 +16,7 @@ public abstract class Driver{
         if (transport == null) {
             throw new WrongRightsException();
         } else {
-            this.transport = transport;
+            this.transport = (T) transport;
         };
     }
 
