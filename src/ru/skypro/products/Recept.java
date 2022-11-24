@@ -8,7 +8,7 @@ public class Recept {
 
     Set<Product> setProducts = new HashSet<>();
     private final String name;
-    public Integer SumCostProducts(){
+    public Integer sumCostProducts(){
         int i=0;
         for (Product product : setProducts) {
             i+= product.getCost();
@@ -26,12 +26,14 @@ public class Recept {
         return "Рецепт{" +
                 "МножествоПродуктов=" + setProducts +
                 ", Название='" + name + '\'' +
-                ", СуммарнаяСтоимостьПродуктов='" + SumCostProducts() + '\'' +
+                ", СуммарнаяСтоимостьПродуктов='" + sumCostProducts() + '\'' +
                 '}';
     }
 
     public void addToSet(Product val){
-        setProducts.add(val);
+        if (val != null) {
+            setProducts.add(val);
+        } else throw new RuntimeException("Product cannot be null");
     }
     public void remFromSet(Product val){
         setProducts.remove(val);

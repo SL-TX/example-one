@@ -7,6 +7,9 @@ import ru.skypro.transport.*;
 
 import java.util.*;
 
+import static ru.skypro.Utils.addToSet;
+import static ru.skypro.Utils.remFromSet;
+
 public class Main {
     public static void main(String[] args){
         Set<Transport> cars = new HashSet<>();
@@ -63,10 +66,10 @@ public class Main {
         car3.addMechanic(mech1);
         car3.addMechanic(mech2);
         car4.addMechanic(mech2);
-        car1.setDriver(driver1);
-        car2.setDriver(driver2);
-        car3.setDriver(driver3);
-        car4.setDriver(driver4);
+        car1.addDrivers(driver1);
+        car2.addDrivers(driver2);
+        car3.addDrivers(driver3);
+        car4.addDrivers(driver4);
         car1.addSponsor(sponsor1);
         car2.addSponsor(sponsor2);
         car3.addSponsor(sponsor1);
@@ -149,7 +152,9 @@ public class Main {
             Random r = new Random();
             int int1 = r.nextInt(7)+2;
             int int2 = r.nextInt(7)+2;
-            uniqueQuestion.add(int1 + "*" + int2);
+            if (!uniqueQuestion.contains(int2 + "*" + int1)) {
+                uniqueQuestion.add(int1 + "*" + int2);
+            }
 
         } while (uniqueQuestion.size()<=14);//numRows - 1
         for (var element:uniqueQuestion) {
@@ -181,18 +186,6 @@ public class Main {
         return refMap.getOrDefault(key, null);
     }
 
-
-    private static <T> void addToSet(Set<T> set, T val){
-        if (!set.add(val)){
-            throw new RuntimeException("необходимо выбросить исключение");
-        }
-    }
-
-    private static <T> void remFromSet(Set<T> set, T val){
-        if(!set.remove(val)){
-            throw new RuntimeException("Ошибка удаления товара");
-        }
-    }
 
     private static void addInSomeQueue(List<Queue<String>> q1, String val){
         Queue<String> minindex;

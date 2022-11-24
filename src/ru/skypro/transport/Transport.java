@@ -16,7 +16,7 @@ public abstract class Transport {
 
     private List<Mechanic> mechanicList = new ArrayList<>();
 
-    private Driver driver;
+    private List<Driver<?>> drivers = new ArrayList<>();
 
     private List<Sponsor> sponsorsList = new ArrayList<>();
 
@@ -27,12 +27,12 @@ public abstract class Transport {
         this.type = type;
     }
 
-    public Driver getDriver() {
-        return driver;
+    public List<Driver<?>> getDrivers() {
+        return drivers;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public void addDrivers(Driver<?> driver) {
+        this.drivers.add(driver);
     }
 
     public List<Mechanic> getMechanicList() {

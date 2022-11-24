@@ -37,7 +37,7 @@ public abstract class Driver<T extends Transport & Competitive>{
                 "transport=" + transport +
                 ", fio='" + fullName + '\'' +
                 ", haveRights=" + haveRights +
-                ", stazh=" + experience +
+                ", experience=" + experience +
                 '}';
     }
 }

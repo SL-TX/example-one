@@ -42,11 +42,11 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product product)) return false;
-        return Objects.equals(cost, product.cost) && Objects.equals(weight, product.weight);
+        return Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cost, weight);
+        return Objects.hash(name);
     }
 }
