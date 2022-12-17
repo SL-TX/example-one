@@ -2,16 +2,19 @@ package ru.skypro;
 
 import ru.skypro.exceptions.DataInvalidException;
 import ru.skypro.task.Task;
-import ru.skypro.task.TaskPeriod;
-import ru.skypro.task.TaskType;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     static Map<Integer, Task> taskMap = new HashMap<>();
     public static void main(String[] args){
+        testInitTasks();
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
@@ -40,6 +43,31 @@ public class Main {
         }
     }
 
+    private static void testInitTasks() {
+        try {
+            Task newTask = new Task(
+                    "Планерка по понедельникам",
+                    "Планерка по понедельникам",
+                    2,
+                    3,
+                    "17-10-2022",
+                    "10:00"
+            );
+            taskMap.put(newTask.getId(), newTask);
+            newTask = new Task(
+                    "Обеденный перерыв",
+                    "Обеденный перерыв",
+                    1,
+                    2,
+                    "17-10-2022",
+                    "13:00"
+            );
+            taskMap.put(newTask.getId(), newTask);
+        } catch (DataInvalidException e){
+            System.err.println();
+        }
+    }
+
     private static void inputTask(Scanner scanner) {
         System.out.print("Введите название задачи: \n");
         String taskName = scanner.next();
@@ -61,7 +89,7 @@ public class Main {
                     taskPeriod,
                     date,
                     time
-            );
+                    );
             taskMap.put(newTask.getId(), newTask);
         } catch (DataInvalidException e){
             System.err.println();
@@ -85,37 +113,26 @@ public class Main {
             System.out.print(task.getKey()+" "+task.getValue().toString()+" \n");
         }
         System.out.print("0 - отменить \n");
-        int type = scanner.nextInt();
-        if (type == 0){
+        int idTask = scanner.nextInt();
+        if (idTask == 0){
             return;
         }
-        if (taskMap.remove(type) == null){
+        if (taskMap.containsKey(idTask)){
+            taskMap.get(idTask).deleteTask();
+            System.out.print("Удалено\n");
+        } else {
             System.out.print("Данного id не найдено \n");
         }
     }
 
     private static void getTaskOnDate(Scanner scanner) {
-        try {
-            Task newTask = new Task(
-                    "1",
-                    "1",
-                    1,
-                    1,
-                    "11-11-2011",
-                    "12:12"
-            );
-            taskMap.put(newTask.getId(), newTask);
-            newTask = new Task(
-                    "2",
-                    "2",
-                    2,
-                    2,
-                    "12-12-2011",
-                    "24:12"
-            );
-            taskMap.put(newTask.getId(), newTask);
-        } catch (DataInvalidException e){
-            System.err.println();
-        }
+        System.out.print("Выберите дату задачи: \n Формат Даты: 'dd-mm-yyyy'\n");
+        String date = scanner.next();
+        List<Task> response = taskMap.values().stream().filter(
+                (t) ->  t.whenNext(date)
+        ).toList();
+        response.forEach(task -> {
+            System.out.print(task.toString() + " \n");
+        });
     }
 }

@@ -1,9 +1,10 @@
 package ru.skypro.task;
 
 import ru.skypro.exceptions.DataInvalidException;
-import ru.skypro.exceptions.NotImplementedException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -16,7 +17,10 @@ public class Task implements PeriodUtils {
     private LocalDateTime dateTime;
     private TaskPeriod taskPeriod;
 
+    private Boolean flagDelete;
+
     public Task(String header, String description, int type, int taskPeriod, String date, String time) throws DataInvalidException {
+        this.flagDelete = false;
         try {
             this.id = counter++;
             this.header = header;
@@ -74,25 +78,35 @@ public class Task implements PeriodUtils {
     }
 
     @Override
-    public String whenNext(Task task) throws NotImplementedException {
+    public Boolean whenNext(String date)  {
+        if (this.flagDelete) {
+            return false;
+        }
+        var dateIs = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         switch (taskPeriod) {
             case ONE_OFF -> {
-                return "asd";
+                return this.dateTime.toLocalDate() == dateIs;
             }
             case DAILY -> {
-                return "as2d";
+                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1)).anyMatch(t->t.equals(dateIs));
             }
             case WEEKLY -> {
-                return "asd3";
+                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofWeeks(1)).anyMatch(t->t.equals(dateIs));
             }
             case MONTHLY -> {
-                return "a4sd";
+                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofMonths(1)).anyMatch(t->t.equals(dateIs));
             }
             case YEARLY -> {
-                return "a5sd";
+                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofYears(1)).anyMatch(t->t.equals(dateIs));
+            }
+            default -> {
+                return false;
             }
         }
-        throw new NotImplementedException("taskPeriod");
+    }
+
+    public void deleteTask() {
+        this.flagDelete = true;
     }
 
     @Override

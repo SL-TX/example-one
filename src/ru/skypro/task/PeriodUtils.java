@@ -1,9 +1,11 @@
 package ru.skypro.task;
 
 import ru.skypro.exceptions.NotImplementedException;
-import ru.skypro.task.Task;
+
+import java.time.LocalDate;
 
 public interface PeriodUtils {
 
-    String whenNext(Task task) throws NotImplementedException;
+
+    Boolean whenNext(String date);
 }
