@@ -85,19 +85,21 @@ public class Task implements PeriodUtils {
         var dateIs = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         switch (taskPeriod) {
             case ONE_OFF -> {
-                return this.dateTime.toLocalDate() == dateIs;
+                return dateIs.equals(this.dateTime.toLocalDate());
             }
             case DAILY -> {
-                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1)).anyMatch(t->t.equals(dateIs));
+                return dateIs.isAfter(this.dateTime.toLocalDate());
             }
             case WEEKLY -> {
-                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofWeeks(1)).anyMatch(t->t.equals(dateIs));
+                return dateIs.getDayOfWeek().equals(this.dateTime.toLocalDate().getDayOfWeek());
             }
             case MONTHLY -> {
-                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofMonths(1)).anyMatch(t->t.equals(dateIs));
+                return dateIs.getDayOfMonth() == this.dateTime.toLocalDate().getDayOfMonth();
+//                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofMonths(1)).anyMatch(t->t.equals(dateIs));
             }
             case YEARLY -> {
-                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofYears(1)).anyMatch(t->t.equals(dateIs));
+                return dateIs.getDayOfYear() == this.dateTime.toLocalDate().getDayOfYear();
+//                return this.dateTime.toLocalDate().datesUntil(dateIs.plusDays(1), Period.ofYears(1)).anyMatch(t->t.equals(dateIs));
             }
             default -> {
                 return false;
